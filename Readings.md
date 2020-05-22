@@ -41,4 +41,5 @@
 - [dEFEND: Explainable Fake News Detection](http://pike.psu.edu/publications/kdd19.pdf) (CIKM'19)
 - [Natural Language Interaction with Explainable AI Models](https://arxiv.org/pdf/1903.05720.pdf) (CVPR Workshop'19)
 - [XFake: Explainable Fake News Detector with Visualizations](https://www.cise.ufl.edu/~eragan/papers/Yang_XFake2019.pdf) (WWW'19)
+
 **Multi-Modal Models for Image and Text**
