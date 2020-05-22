@@ -1,3 +1,4 @@
+# Reading List for Hate Speech Detection
 **Hate Speech Detection**
 -  [A Survey on Hate Speech Detection using Natural Language Processing](https://www.aclweb.org/anthology/W17-1101/) (ACL Workshop'17)
 -  [A Survey on Automatic Detection of Hate Speech in Text](https://www.researchgate.net/publication/326725221_A_Survey_on_Automatic_Detection_of_Hate_Speech_in_Text) (CSUR'18)
@@ -31,7 +32,13 @@
 **Adversarial Learning for Text**
 -  [Adversarial multi-task learning for text classification](https://arxiv.org/pdf/1704.05742.pdf) (ACL'17)
 -  [Adversarial training methods for semi-supervised text classification](https://arxiv.org/pdf/1605.07725.pdf) (ICLR'16)
--  
 
 **Class Imbalance Problem**
 - [Global-and-Local Aware Data Generation for the Class Imbalance Problem](https://epubs.siam.org/doi/pdf/10.1137/1.9781611976236.35) (SDM'20)
+
+**Explainable Models for Text**
+- [Towards Explainable NLP: A Generative Explanation Framework for Text Classification](https://www.aclweb.org/anthology/P19-1560.pdf) (ACL'19)
+- [dEFEND: Explainable Fake News Detection](http://pike.psu.edu/publications/kdd19.pdf) (CIKM'19)
+- [Natural Language Interaction with Explainable AI Models](https://arxiv.org/pdf/1903.05720.pdf) (CVPR Workshop'19)
+- [XFake: Explainable Fake News Detector with Visualizations](https://www.cise.ufl.edu/~eragan/papers/Yang_XFake2019.pdf) (WWW'19)
+**Multi-Modal Models for Image and Text**
