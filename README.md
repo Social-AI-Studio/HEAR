@@ -2,8 +2,9 @@
 
 ### Tasks from 04.08.2020 Meeting
 Work on the following tasks for next meeting:
-1. Update dataset summary table.
-2. Collect and annotate own dataset
+1. Collect the retweets/quotes/reply for our COVID-19 dataset.
+2. Update the hateful posts origin distributions.
+3. Perform analysis on Viral Hate-Induced Tweets and Hateful Influencers.
 
 ---
 ### Proposed Model
