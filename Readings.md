@@ -42,4 +42,9 @@
 - [Natural Language Interaction with Explainable AI Models](https://arxiv.org/pdf/1903.05720.pdf) (CVPR Workshop'19)
 - [XFake: Explainable Fake News Detector with Visualizations](https://www.cise.ufl.edu/~eragan/papers/Yang_XFake2019.pdf) (WWW'19)
 
-**Multi-Modal Models for Image and Text**
+**Information Diffusion**
+- [Modeling information diffusion in implicit networks](https://ieeexplore.ieee.org/iel5/5690658/5693950/05694014.pdf?casa_token=Sf3ye2A6rGAAAAAA:DwohAr60E7ZVlENKAPEoOXFaQrVEh-JsAmxCQfA4ICY7Wne6Khbs5rE5T5CGj-dbR-jtG8THlmU) (ICDM'10)
+- [The role of social networks in information diffusion](https://dl.acm.org/doi/pdf/10.1145/2187836.2187907?casa_token=4X20vts8fO4AAAAA:dZLfNP__bITFShro0dkNtTwKVlk8YeYYsNRUH0WWGc2WXxsJA0e5_knBNai2VOWDUhw139gNDaM_qQ) (WWW'12)
+- [Information diffusion in online social networks: A survey](https://dl.acm.org/doi/pdf/10.1145/2503792.2503797?casa_token=lqn5rmfsBHcAAAAA:ejMJ9T9ZiIwolYloqf9l8FEHI-OpOCjp5PpHiY_AppR7WYUAEg8EMYaLldjB52BR2tYPAc-8akwgXw) (SIGMOD'13)
+- [Information Diffusion Prediction via Recurrent Cascades Convolution](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8731564&casa_token=AK_bjEkkd5gAAAAA:HELX2qcFwbRZ1Lm8IJZcR-PWXnycobKzUSBUbfS2Lmv65yfpytswlINxTjRb-xp66YHpj5Qd7Hk) (ICDE'19)
+- [Information Cascades Modeling via Deep Multi-Task Learning](https://dl.acm.org/doi/pdf/10.1145/3331184.3331288?casa_token=aCuvh8Zl1v0AAAAA:OxoD46DMWhON_7E_iv2eBUtuPRPIT8dajWs4tgCFfFd7lf3dbADhFX21hSlVWLcMXsCh4pVitqw9kQ) (SIGIR'19)
