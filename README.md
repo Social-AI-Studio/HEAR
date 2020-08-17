@@ -14,13 +14,14 @@ Proposed model framework diagram. Briefly describe the novelty in this proposed 
 Collect own covid-19 dataset and perform annotation on the collected dataset.
 
 ##### Dataset
-|Dataset| #Posts | Labels (#Posts) |
-|:-----:|:------:|:---------------:|
-| COVID-19 dataset (ours)  |   |     |
-| COVID-19 dataset (GTech) |   |     |
+* Total number of tweets: 7.5 millions
+* Total number of edges (relation): 3.9 millions
+ * Number of retweets: 1.6 millions
+ * Number of quoted tweets: 1.5 millions
+ * Number of reply tweets: 0.8 million
 
----
 ### Empirical Analysis
+
 
 ##### Hateful Posts Origin Distributions
 **Origin Definitions**
