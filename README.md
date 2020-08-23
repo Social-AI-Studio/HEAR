@@ -25,14 +25,18 @@ Collect own covid-19 dataset and perform annotation on the collected dataset.
 ![](https://i.imgur.com/DYb9Q1j.png)
 ##### Hateful Posts Origin Distributions
 **Origin Definitions**
-- Retweet: refers to the hate tweet is retweeted from another hateful tweet.
+- Retweet: refers to the hate tweet is retweeted from another hateful/non-hateful tweet.
 - Quote: refers to the hate tweet is quoted from another hateful/non-hateful tweet.
 - Reply: refers to the hate tweet is a reply to another hateful/non-hateful tweet.
 - Source: refers to the hate tweet is an original tweet posted by the user.
 
-|Dataset| #Hateful_Posts | Origins (#Posts) |
-|:-----:|:------:|:---------------:|
-| COVID-19 dataset| 871628  | 7530746 (via PerspectiveAPI) |
+|Origin | #Hateful_Posts (via PerspectiveAPI)| Origins (#Posts) | Hateful Ratio | 
+|:-----:|:------:|:---------------:|:------:|
+| All | 871628  | 7530746 | 0.1157|
+| Retweet | 177576  | 1610543 | 0.1102|
+| Quote | 241209  | 1504289 | 0.1603|
+| Reply | 128808  | 814307 | 0.1581|
+| Source | 397959  | 4090634 | 0.0973|
 
 ##### Viral Hate-Induced Tweets and Hateful Influencers.
 List the top 10 viral tweets that induced the most hateful tweets.
