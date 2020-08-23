@@ -21,8 +21,8 @@ Collect own covid-19 dataset and perform annotation on the collected dataset.
 	* Number of reply tweets: 0.8 million
 
 ### Empirical Analysis
-
-
+#### Hateful Ratio of Each Day
+![](https://i.imgur.com/DYb9Q1j.png)
 ##### Hateful Posts Origin Distributions
 **Origin Definitions**
 - Retweet: refers to the hate tweet is retweeted from another hateful tweet.
@@ -32,8 +32,7 @@ Collect own covid-19 dataset and perform annotation on the collected dataset.
 
 |Dataset| #Hateful_Posts | Origins (#Posts) |
 |:-----:|:------:|:---------------:|
-| COVID-19 dataset (ours)  |   |  Retweet (???), Quote (???), Reply (???), Source(???) |
-| COVID-19 dataset (GTech) |   |  Retweet (???), Quote (???), Reply (???), Source(???) |
+| COVID-19 dataset| 871628  | 7530746 (via PerspectiveAPI) |
 
 ##### Viral Hate-Induced Tweets and Hateful Influencers.
 List the top 10 viral tweets that induced the most hateful tweets.
