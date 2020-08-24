@@ -22,7 +22,7 @@ Collect own covid-19 dataset and perform annotation on the collected dataset.
 
 ### Empirical Analysis
 #### Hateful Ratio of Each Day
-![](https://i.imgur.com/DYb9Q1j.png)
+![](https://i.imgur.com/aQ2j4jf.png)
 ##### Hateful Posts Origin Distributions
 **Origin Definitions**
 - Retweet: refers to the hate tweet is retweeted from another hateful/non-hateful tweet.
