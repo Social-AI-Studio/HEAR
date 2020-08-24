@@ -55,6 +55,7 @@ List the top 10 viral tweets that induced the most hateful tweets.
 |8   |1248684161055023106|252751061|Surgeon Gen. Jerome Adams calls on communities of color to adhere to #coronavirus advice from Trump’s task force: “If not for yourself, then for your abuela. Do it for your grand daddy. Do it for your big mama. Do it for your pop-pop.|685|
 |9   |1248631268549394432|254098258|I’ve just been fitted for PPE and we’re about to go into an intensive care unit at Milton Keynes Hospital to witness the incredible efforts of medics treating Covid 19 patients. Please note we won’t be depleting the hospital’s PPE stock #COVID19 #coronavirus #nhs https://t.co/L20jDvjc8i|679|
 |10  |1248329497897775105|457060718|The boss is in a better place. Such a relief. The country can breathe again  #COVID  #NHS https://t.co/Km9ER9GYxs|569|
+
 List the top 10 user accounts that induced the most hateful tweets.
 
 |Rank| Username | #Hate_Tweets_Induced | Induced_Hate_Tweet_Text |
