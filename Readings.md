@@ -49,3 +49,7 @@
 - [Information Diffusion Prediction via Recurrent Cascades Convolution](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8731564&casa_token=AK_bjEkkd5gAAAAA:HELX2qcFwbRZ1Lm8IJZcR-PWXnycobKzUSBUbfS2Lmv65yfpytswlINxTjRb-xp66YHpj5Qd7Hk) (ICDE'19)
 - [Information Cascades Modeling via Deep Multi-Task Learning](https://dl.acm.org/doi/pdf/10.1145/3331184.3331288?casa_token=aCuvh8Zl1v0AAAAA:OxoD46DMWhON_7E_iv2eBUtuPRPIT8dajWs4tgCFfFd7lf3dbADhFX21hSlVWLcMXsCh4pVitqw9kQ) (SIGIR'19)
 - [On the Aggression Diffusion Modeling and Minimization in Online Social Networks](https://arxiv.org/pdf/2005.10646.pdf) (Arvix'20)
+
+**Rumor Diffusion**
+- [Rumor detection on twitter with tree-structured recursive neural networks](https://www.aclweb.org/anthology/P18-1184.pdf) (ACL'18)
+- [Cascade-LSTM: A Tree-Structured Neural Classifier for Detecting Misinformation Cascades](https://dl.acm.org/doi/pdf/10.1145/3394486.3403317?casa_token=odYt4dgq7CQAAAAA:xoKLJuBiHGJnNhV7o9CY4goiiEt5L_T7eb0JwIsy5eSKY5ErSNnugrmik3vdLFAHkvA84-6GhSmYPw) (KDD'20)
