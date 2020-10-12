@@ -68,6 +68,7 @@ List the top 10 viral tweets that induced the most hateful tweets.
 #### Propagation Feature Statistics
 - Follow the proposed prapagation analysis in *Hierarchical Propagation Networks for Fake News Detection: Investigation and Exploitation* (Shu et al, ICWSM 2020) 
 - Some features cannot be computed in our case since the data is different
+
 | Feature Code | Description |
 |:------------:|:-----------:|
 |S1|Propagation tree depth|
@@ -78,6 +79,7 @@ List the top 10 viral tweets that induced the most hateful tweets.
 |T2|Time diff between first and last node (in mins)|
 |T3|Time diff between source node and node with max outdegree (in mins)|
 |T8|Time diff between source node and the first child (in mins)|
+
 - In order to compare propagation feature statistics, we need to divide propagations into groups
 	- Based on hatefulness of the source tweet, hate severity in the graph etc.
 - In the original paper (Shu et al, 2020), the feature statistics of each group are reported in their min, max and mean values
