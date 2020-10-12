@@ -106,6 +106,11 @@ List the top 10 viral tweets that induced the most hateful tweets.
 ##### Divided by ratio of hateful tweets
 - The propagations are divided into two groups based on the ratio of hateful tweets
 	- Need to choose a threshold the divide propagations into half
+- Threshold: 0.3
+- The number of positive(hateful ratio higher than threshold) and negative(hateful ratio lower than threshold) propagations
+	- Positive: 12804
+	- Negative: 205986
+
 
 | Feature Code | P.Mean | P.Max | P.Min | N.Mean | N.Max | N.Min |
 |:------------:|:------:|:-----:|:-----:|:------:|:-----:|:-----:|
