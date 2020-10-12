@@ -37,7 +37,7 @@ Currently using COVID-HATE dataset provided by CLAWS lab, GeorgiaTech
 	- Positive agreement is low (less than 1% both annotate as hateful)
 - Annotation agreement of PerspectiveAPI
 	- Annotating	
-##### Hateful Posts Origin Distributions
+#### Hateful Posts Origin Distributions
 **Origin Definitions**
 - Retweet: refers to the hate tweet is retweeted from another hateful/non-hateful tweet.
 - Quote: refers to the hate tweet is quoted from another hateful/non-hateful tweet.
@@ -47,7 +47,7 @@ Currently using COVID-HATE dataset provided by CLAWS lab, GeorgiaTech
 |Origin | #Hateful_Posts | #Posts | Hateful Ratio | 
 |:-----:|:------:|:---------------:|:------:|
 
-##### Viral Hate-Induced Tweets and Hateful Influencers.
+#### Viral Hate-Induced Tweets and Hateful Influencers.
 List the top 10 viral tweets that induced the most hateful tweets.
 1. The top 10 components contain most hateful tweets
 2. Find the tweet with highest centrality in the components
@@ -65,21 +65,25 @@ List the top 10 viral tweets that induced the most hateful tweets.
 |9|1240385571039539200| 429227921| My wife is from Taiwan, so my kids are half-Chinese. Because of racist assholes like @JohnCornyn &amp; @realDonaldTrump, their classmates are already blaming them for the virus &amp; asking if they eat bats. My 9 year old son even came home &amp; asked me if it was true. It's heart-breaking| 141|
 |10|1241504277048238080| 29501253| We need to bring people together to fight Coronavirus.  Blaming China may seem like good politics, but it doesn’t solve anything, or mitigate the Trump Administration’s failures.  Calling it the “Chinese virus” only breeds disunity, discrimination and division.  Enough already.| 132|
 
-
-List the top 10 user accounts that induced the most hateful tweets.
-
-|Rank| Username | #Hate_Tweets_Induced | Induced_Hate_Tweet_Text |
-|:--:|:--------:|:--------------------:|:-----------------------:|
-|1   |          |                      |                         |
-|2   |          |                      |                         |
-|3   |          |                      |                         |
-|4   |          |                      |                         |
-|5   |          |                      |                         |
-|6   |          |                      |                         |
-|7   |          |                      |                         |
-|8   |          |                      |                         |
-|9   |          |                      |                         |
-|10  |          |                      |                         |
+#### Propagation Feature Statistics
+- Follow the proposed prapagation analysis in *Hierarchical Propagation Networks for Fake News Detection: Investigation and Exploitation* (Shu et al, ICWSM 2020) 
+- Some features cannot be computed in our case since the data is different
+| Feature Code | Description |
+|:------------:|:-----------:|
+|S1|Propagation tree depth|
+|S2|Number of nodes in propagation|
+|S3|Max outdegree in the propagation|
+|S5|Depth of node with max outdegree|
+|T1|Average time diff between nodes (in mins)|
+|T2|Time diff between first and last node (in mins)|
+|T3|Time diff between source node and node with max outdegree (in mins)|
+|T8|Time diff between source node and the first child (in mins)|
+- In order to compare propagation feature statistics, we need to divide propagations into groups
+	- Based on hatefulness of the source tweet, hate severity in the graph etc.
+- In the original paper (Shu et al, 2020), the feature statistics of each group are reported in their min, max and mean values
+	- As in our observation, the distribution of these statistics are distributed more similar to a log uniform distribution
+	- Report mean values may not be meaningful, need to find other stats to report
+##### Divided by label of source node
 
 ##### Experiments - Predicting Hate Speech
 Designing some features based on our empirical findings to improve hate speech detection.
