@@ -70,7 +70,7 @@ List the top 10 viral tweets that induced the most hateful tweets.
 - Some features cannot be computed in our case since the data is different
 
 | Feature Code | Description |
-|:------------:|:-----------:|
+|:------------|:-----------|
 |S1|Propagation tree depth|
 |S2|Number of nodes in propagation|
 |S3|Max outdegree in the propagation|
