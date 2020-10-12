@@ -70,7 +70,7 @@ List the top 10 viral tweets that induced the most hateful tweets.
 - Some features cannot be computed in our case since the data is different
 
 | Feature Code | Description |
-|:------------|:-----------|
+|:------------:|:-----------|
 |S1|Propagation tree depth|
 |S2|Number of nodes in propagation|
 |S3|Max outdegree in the propagation|
@@ -85,9 +85,40 @@ List the top 10 viral tweets that induced the most hateful tweets.
 - In the original paper (Shu et al, 2020), the feature statistics of each group are reported in their min, max and mean values
 	- As in our observation, the distribution of these statistics are distributed more similar to a log uniform distribution
 	- Report mean values may not be meaningful, need to find other stats to report
-##### Divided by label of source node
 
-##### Experiments - Predicting Hate Speech
+##### Divided by label of source node
+- The propagations are divided into two groups based on the label of their source tweets
+- The number of positive(hateful source tweet) and negative(non-hateful source tweet) propagations
+	- Positive: 6538
+	- Negative: 212252
+
+| Feature Code | P.Mean | P.Max | P.Min | N.Mean | N.Max | N.Min |
+|:------------:|:------:|:-----:|:-----:|:------:|:-----:|:-----:|
+|S1| 1.08 | 7 | 1 | 1.07| 10| 1|
+|S2| 5.13 | 4825 | 2 | 3.89| 20014 | 2 |
+|S3| 3.60 | 4692 | 1 | 2.67 | 14819 | 1 |
+|S5| 0.05| 10 | 0 | 0.04| 9 | 0 |
+|T1| 826.41 | 76045.45 | 0 | 645.65 | 26253.45 | 0 |
+|T2| 1316.63 | 115670.22 | 0 | 990.83 | 126253.45 | 0 |
+|T3| 26.63 | 60531.15 | 0 | 9.16 | 98136.23 | 0 |
+|T8| 615.574674 | 76045.45 | 0 | 513.38 | 126253.45 | 0 |
+
+##### Divided by ratio of hateful tweets
+- The propagations are divided into two groups based on the ratio of hateful tweets
+	- Need to choose a threshold the divide propagations into half
+
+| Feature Code | P.Mean | P.Max | P.Min | N.Mean | N.Max | N.Min |
+|:------------:|:------:|:-----:|:-----:|:------:|:-----:|:-----:|
+|S1| 1.06 | 7 | 1 | 1.07| 10| 1|
+|S2| 2.92 | 557 | 2 | 3.99 | 20014 | 2 |
+|S3| 1.83 | 551 | 1 | 2.75 | 14819 | 1 |
+|S5| 0.05| 3 | 0 | 0.04| 10 | 0 |
+|T1| 769.80 | 110938.25 | 0 | 643.36 | 126253.45 | 0 |
+|T2| 1074.53 | 115670.22 | 0 | 995.97 | 126253.45 | 0 |
+|T3| 28.69 | 98136.23 | 0 | 8.50 | 75870.12 | 0 |
+|T8| 613.88 | 110938.25 | 0 | 510.37 | 126253.45 | 0 |
+
+## Experiments - Predicting Hate Speech
 Designing some features based on our empirical findings to improve hate speech detection.
 
 
