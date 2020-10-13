@@ -126,5 +126,11 @@ List the top 10 viral tweets that induced the most hateful tweets.
 ## Experiments - Predicting Hate Speech
 Designing some features based on our empirical findings to improve hate speech detection.
 
-
-
+## TODO
+- In addition to structural features (S1, S2, S3, S5) and temporal features (T1, T2, T3, T8), find content features
+	- e.g. freaquent keywords (tf-idf etc.), topic distribution
+- Some structural "patterns"
+	- e.g. frequent local/global structure in hateful/non-hateful propagations	
+- Working on analysis of our datasets
+	- get (temporal) augmented data
+	- do same analysis
