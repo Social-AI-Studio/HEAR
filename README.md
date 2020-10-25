@@ -65,6 +65,12 @@ List the top 10 viral tweets that induced the most hateful tweets.
 |9|1240385571039539200| 429227921| My wife is from Taiwan, so my kids are half-Chinese. Because of racist assholes like @JohnCornyn &amp; @realDonaldTrump, their classmates are already blaming them for the virus &amp; asking if they eat bats. My 9 year old son even came home &amp; asked me if it was true. It's heart-breaking| 141|
 |10|1241504277048238080| 29501253| We need to bring people together to fight Coronavirus.  Blaming China may seem like good politics, but it doesn’t solve anything, or mitigate the Trump Administration’s failures.  Calling it the “Chinese virus” only breeds disunity, discrimination and division.  Enough already.| 132|
 
+#### Scatter Plot of Number of Nodes and Hateful Nodes in Propagations
+![image-2.png](./image-2.png)
+![image-3.png](./image-3.png)
+#### Histogran of hate level of propagations and nodes
+![image.png](./image.png)
+![image-1.png](./image-1.png)
 #### Propagation Feature Statistics
 - Follow the proposed prapagation analysis in *Hierarchical Propagation Networks for Fake News Detection: Investigation and Exploitation* (Shu et al, ICWSM 2020) 
 - Some features cannot be computed in our case since the data is different
@@ -127,10 +133,10 @@ List the top 10 viral tweets that induced the most hateful tweets.
 Designing some features based on our empirical findings to improve hate speech detection.
 
 ## TODO
-- In addition to structural features (S1, S2, S3, S5) and temporal features (T1, T2, T3, T8), find content features
-	- e.g. freaquent keywords (tf-idf etc.), topic distribution
+- Topic distribution
 - Some structural "patterns"
 	- e.g. frequent local/global structure in hateful/non-hateful propagations	
+- Stance detection as propagation anlaysis feature
 - Working on analysis of our datasets
 	- get (temporal) augmented data
 	- do same analysis
