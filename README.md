@@ -73,8 +73,21 @@ List the top 10 viral tweets that induced the most hateful tweets.
 ![](https://i.imgur.com/mXP9Hf3.png)
 
 ## Experiments - Predicting Hate Speech
-Designing some features based on our empirical findings to improve hate speech detection.
-
+### Problem Formulataion
+- Given the propagation of a source tweet after a certain timespan it was posted
+- Predict the final hate severity level of the propagation of the tweet after a long period
+### Possible Baselines
+#### Tweet Embedding
+- TF-IDF
+#### Dealing with Propagation Graph
+- RvNN
+	- [Rumor Detection on Twitter with Tree-structured Recursive Neural Networks](https://www.aclweb.org/anthology/P18-1184/) ACL'18
+- Cascade-LSTM
+	- [Cascade-LSTM: A Tree-Structured Neural Classifier for Detecting Misinformation Cascades](https://www.aclweb.org/anthology/P19-1498.pdf) KDD'20
+- GCN
+	- [Semi-Supervised Classification with Graph Convolutional Networks](https://arxiv.org/abs/1609.02907) ICLR'17
+#### Classification
+- MLP
 ## TODO
 - Topic distribution
 - Some structural "patterns"
