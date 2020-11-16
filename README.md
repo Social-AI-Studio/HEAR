@@ -70,16 +70,15 @@ List the top 10 viral tweets that induced the most hateful tweets.
 ![](https://i.imgur.com/75xFgBm.png)
 ![](https://i.imgur.com/8P6cmVg.png)
 ##### COVID-Hate
-
-![](https://i.imgur.com/PF6DzNx.png)
-![](https://i.imgur.com/gLMOTzQ.png)
+![](https://i.imgur.com/808d7CC.png)
+![](https://i.imgur.com/Y36FSY0.png)
 #### Histogran of hate level of propagations and nodes
 ##### GeogiaTech
 ![](https://i.imgur.com/EVHbvZi.png)
 ![](https://i.imgur.com/mXP9Hf3.png)
 ##### COVID-Hate
-![](https://i.imgur.com/808d7CC.png)
-![](https://i.imgur.com/Y36FSY0.png)
+![](https://i.imgur.com/PF6DzNx.png)
+![](https://i.imgur.com/gLMOTzQ.png)
 
 ## Experiments - Predicting Hate Speech
 ### Problem Formulataion
