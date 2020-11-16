@@ -66,11 +66,20 @@ List the top 10 viral tweets that induced the most hateful tweets.
 |10|1241504277048238080| 29501253| We need to bring people together to fight Coronavirus.  Blaming China may seem like good politics, but it doesn’t solve anything, or mitigate the Trump Administration’s failures.  Calling it the “Chinese virus” only breeds disunity, discrimination and division.  Enough already.| 132|
 
 #### Scatter Plot of Number of Nodes and Hateful Nodes in Propagations
+##### GeogiaTech
 ![](https://i.imgur.com/75xFgBm.png)
 ![](https://i.imgur.com/8P6cmVg.png)
+##### COVID-Hate
+
+![](https://i.imgur.com/PF6DzNx.png)
+![](https://i.imgur.com/gLMOTzQ.png)
 #### Histogran of hate level of propagations and nodes
+##### GeogiaTech
 ![](https://i.imgur.com/EVHbvZi.png)
 ![](https://i.imgur.com/mXP9Hf3.png)
+##### COVID-Hate
+![](https://i.imgur.com/808d7CC.png)
+![](https://i.imgur.com/Y36FSY0.png)
 
 ## Experiments - Predicting Hate Speech
 ### Problem Formulataion
