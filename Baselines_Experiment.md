@@ -48,30 +48,45 @@
 
 ## Result
 ### GeorgiaTech dataset
-#### TD Net
-* F1 score
-    * Train: 0.9065
-    * Test:  0.4495
-#### BU Net
-* F1 score
-    * Train: 0.7519
-    * Test:  0.4715
-#### DD Net
-* F1 score
-    * Train: 0.8448
-    * Test: 0.4148
+#### BUNet (with attn)
+* f1: 0.3720827723967778
+* acc: 0.42763542588393816
+### GeorgiaTech dataset (percentile split)
+#### BUNet (with attn)
+* f1: 0.3655717365157455
+* acc: 0.4088579993248989
+
+
 ### COVID-Hate dataset
 * Report balanced accuracy (i.e., average of class recall) and f1 score (averaged across classes)
-#### BU Net
+#### Fixed Embedding
+##### BU Net
 * f1: 0.614800764862369
 * acc: 0.6134094488082552
-#### BU Net with attn
+##### BU Net with attn
 * f1: 0.6186547740499815
 * acc: 0.622167371005253
-#### TD Net
+##### TD Net
 * f1: 0.5578762863195781
 * acc: 0.5724126594541262
-#### DD Net
-#### DD Net with attn
+##### DD Net
+* f1: 0.6156915332254467
+* acc: 0.617082676725526
+##### DD Net with attn
 * f1: 0.6035906984035163
 * acc: 0.622819134749524
+#### Trainable Embedding (with pretrained)
+##### BUNet (with attn)
+* f1: 0.6253691252745958
+* acc: 0.6294998165365381
+##### Word-level attention BUNet
+* f1: 0.5342615623521869
+* acc: 0.5719565679029589
+##### Word2Node attention BUNet
+* f1: 0.6236496281729658
+* acc: 0.6279824834512374
+
+### COVID-Hate dataset (Percentile split)
+#### BU Net attn
+* f1: 0.5868514162270816
+* acc: 0.5774098409082233
