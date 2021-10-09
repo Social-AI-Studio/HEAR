@@ -24,6 +24,207 @@ import math
 
 import networkx as nx
 from networkx.algorithms import tree, dag, distance_measures
+
+class NodeClassiDataset(Dataset):
+    def __init__(self, data):
+        self.feats = []
+        self.labels = []
+        for d in data:
+            self.feats.append(d[0])
+            self.labels.append(d[1])
+
+    def __len__(self):
+        return len(self.labels)
+    
+    def __getitem__(self, index):
+        if torch.Tensor(self.feats[index]).shape[0] == 0:
+            return torch.zeros(1, 300), torch.Tensor([self.labels[index]])
+        else:
+            return torch.Tensor(self.feats[index]), torch.Tensor([self.labels[index]])
+
+class TreeDataset(Dataset):
+    def __init__(self, propagation_path, idx_path, embedding_path, num_classes):
+        #self.num_each_class = num_each_class
+        self.num_classes = num_classes
+        
+        with open(propagation_path, 'rb') as file:
+            self.propagations = pickle.load(file)
+        with open(idx_path, 'rb') as file:
+            self.tid2idx = pickle.load(file)
+        self.embeddings = []
+        with open(embedding_path, 'r') as file:
+            pbar = tqdm(total=len(self.tid2idx))
+            pbar.set_description("Loading embeddings")
+            while True:
+                line = file.readline()
+                if not line:
+                    break
+                embed = np.array(eval(line))
+
+                if embed.shape[0] == 0:
+                    embed = np.zeros((1, 300))
+                self.embeddings.append(embed)
+                pbar.update()
+                
+        self.tups = []
+        for tweets, edges, label in self.propagations:    
+            tup = self.build_tree(tweets, edges)
+            self.tups.append(tup)
+            
+            
+        self.series = []
+        for tup in self.tups:
+            self.series.append(self.time_series(tup))
+    
+    def __len__(self):
+        return len(self.propagations)
+    
+    def __getitem__(self, index):
+        tids = [node['tid'] for node in self.propagations[index][0]]
+        label = self.propagations[index][2]
+        tup = self.tups[index]
+        
+        tid2idx = {}
+        embeddings = []
+        for tid in tids:
+            tid2idx[tid] = len(embeddings)
+            embeddings.append(self.embeddings[self.tid2idx[tid]])
+
+        timeseries = self.series[index]
+        return tup, tid2idx, embeddings, timeseries, label
+    
+    def build_tree(self, tweets, edges):
+        nodes = set()
+        nodes = {tweet['tid'] for tweet in tweets}
+        p_count = {node: 0 for node in nodes}
+        parents = {node: [] for node in nodes}
+        c_count = {node: 0 for node in nodes}
+        children = {node: [] for node in nodes}
+
+        for edge in edges:
+            child, parent = edge
+            p_count[child] += 1
+            parents[child].append(parent)
+            c_count[parent] += 1
+            children[parent].append(child)
+        
+        leaf = [tid for tid in c_count if c_count[tid]==0]
+        root = [tid for tid in p_count if p_count[tid]==0]
+        
+        tid2labels = {tweet['tid']: tweet['label'] for tweet in tweets}
+        
+        start_time = min([tweet['timestamp'] for tweet in tweets if tweet['tid'] in root])        
+        tid2time = {tweet['tid']: (tweet['timestamp']- start_time)/60 for tweet in tweets}        
+                
+        return root, leaf, children, c_count, parents, p_count, tid2labels, tid2time
+    
+    def time_series(self, tup):
+        # window
+        total_time = 60.
+        window = 5.
+        
+        root, leaf, children, c_count, parents, p_count, tid2labels, tid2time = tup
+        timeseries = np.zeros([int(total_time//window), 1])
+        
+        for tid in children:
+            timeseries[np.clip(np.round(tid2time[tid]//window).astype(int), 0, timeseries.shape[0]-1)][0] += 1
+        return timeseries
+    
+class BalancedTreeDataset(Dataset):
+    def __init__(self, propagation_path, idx_path, embedding_path, num_classes, num_each_class):
+        self.num_each_class = num_each_class
+        self.num_classes = num_classes
+        
+        with open(propagation_path, 'rb') as file:
+            self.propagations = pickle.load(file)
+        with open(idx_path, 'rb') as file:
+            self.tid2idx = pickle.load(file)
+        self.embeddings = []
+
+        with open(embedding_path, 'r') as file:
+            pbar = tqdm(total=len(self.tid2idx))
+            pbar.set_description("Loading embeddings")
+            while True:
+                line = file.readline()
+                if not line:
+                    break
+                embed = np.array(eval(line))
+                if embed.shape[0] == 0:
+                    embed = np.zeros((1, 300))
+                self.embeddings.append(embed)
+                pbar.update()
+
+        self.tups = []
+        for tweets, edges, label in self.propagations:    
+            tup = self.build_tree(tweets, edges)
+            self.tups.append(tup)
+        
+        self.series = []
+        for tup in self.tups:
+            self.series.append(self.time_series(tup))
+
+        self.sampling_idxs = []
+        for target in range(self.num_classes):
+            tmp = [idx for idx, (tids, edges, label) in enumerate(self.propagations) if label==target]
+            self.sampling_idxs += random.choices(tmp, k = self.num_each_class)
+        random.shuffle(self.sampling_idxs)
+    
+    
+    def __len__(self):
+        return len(self.sampling_idxs)
+    
+    def __getitem__(self, index):
+        index = self.sampling_idxs[index]
+        tids = [node['tid'] for node in self.propagations[index][0]]
+        label = self.propagations[index][2]
+        tup = self.tups[index]
+        
+        tid2idx = {}
+        embeddings = []
+        for tid in tids:
+            tid2idx[tid] = len(embeddings)
+            embeddings.append(self.embeddings[self.tid2idx[tid]])
+        
+        timeseries = self.series[index]
+        return tup, tid2idx, embeddings, timeseries, label
+    
+    def build_tree(self, tweets, edges):
+        nodes = set()
+        nodes = {tweet['tid'] for tweet in tweets}
+        p_count = {node: 0 for node in nodes}
+        parents = {node: [] for node in nodes}
+        c_count = {node: 0 for node in nodes}
+        children = {node: [] for node in nodes}
+
+        for edge in edges:
+            child, parent = edge
+            p_count[child] += 1
+            parents[child].append(parent)
+            c_count[parent] += 1
+            children[parent].append(child)
+        
+        leaf = [tid for tid in c_count if c_count[tid]==0]
+        root = [tid for tid in p_count if p_count[tid]==0]
+        
+        tid2labels = {tweet['tid']: tweet['label'] for tweet in tweets}
+        
+        start_time = min([tweet['timestamp'] for tweet in tweets if tweet['tid'] in root])        
+        tid2time = {tweet['tid']: (tweet['timestamp']- start_time)/60 for tweet in tweets}        
+        
+        return root, leaf, children, c_count, parents, p_count, tid2labels, tid2time
+    
+    
+    def time_series(self, tup):
+        # window
+        total_time = 60.
+        window = 5.
+        
+        root, leaf, children, c_count, parents, p_count, tid2labels, tid2time = tup
+        timeseries = np.zeros([int(total_time//window), 1])
+        
+        for tid in children:
+            timeseries[np.clip(np.round(tid2time[tid]//window).astype(int), 0, timeseries.shape[0]-1)][0] += 1
+        return timeseries
     
 class RandomCutBalancedTreeDataset(Dataset):
     def __init__(self, propagation_path, idx_path, embedding_path, num_classes, num_each_class, cut_prob):
@@ -113,8 +314,8 @@ class RandomCutBalancedTreeDataset(Dataset):
         
         tid2labels = {tweet['tid']: tweet['label'] for tweet in tweets}
         
-        start_time = min([tweet['created_at'] for tweet in tweets if tweet['tid'] in root])        
-        tid2time = {tweet['tid']: (tweet['created_at']- start_time).seconds/60 for tweet in tweets}        
+        start_time = min([tweet['timestamp'] for tweet in tweets if tweet['tid'] in root])        
+        tid2time = {tweet['tid']: (tweet['timestamp']- start_time)/60 for tweet in tweets}        
         
         return root, leaf, children, c_count, parents, p_count, tid2labels, tid2time
     
@@ -210,8 +411,8 @@ class FixedCutTreeDataset(Dataset):
         
         tid2labels = {tweet['tid']: tweet['label'] for tweet in tweets}
         
-        start_time = min([tweet['created_at'] for tweet in tweets if tweet['tid'] in root])        
-        tid2time = {tweet['tid']: (tweet['created_at']- start_time).seconds/60 for tweet in tweets}        
+        start_time = min([tweet['timestamp'] for tweet in tweets if tweet['tid'] in root])        
+        tid2time = {tweet['tid']: (tweet['timestamp']- start_time)/60 for tweet in tweets}        
         
         return root, leaf, children, c_count, parents, p_count, tid2labels, tid2time
     
@@ -313,8 +514,8 @@ class BalancedFixedCutTreeDataset(Dataset):
         
         tid2labels = {tweet['tid']: tweet['label'] for tweet in tweets}
         
-        start_time = min([tweet['created_at'] for tweet in tweets if tweet['tid'] in root])        
-        tid2time = {tweet['tid']: (tweet['created_at']- start_time).seconds/60 for tweet in tweets}        
+        start_time = min([tweet['timestamp'] for tweet in tweets if tweet['tid'] in root])        
+        tid2time = {tweet['tid']: (tweet['timestamp']- start_time)/60 for tweet in tweets}        
         
         return root, leaf, children, c_count, parents, p_count, tid2labels, tid2time
     

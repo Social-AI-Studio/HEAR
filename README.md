@@ -4,14 +4,41 @@ Code for IAAA 2021 Paper: "Early Prediction of Hate Speech Propagation" <p>
 </p>
 
 ## Data
-The construction of our datasets and their corresponding data source is provided in the paper. According to Twitter's policy we cannot share the data content. Intead, sample data for running simple test is provided.
+The detail preprocessing of data is in `implmentation/build_propagation_level_data.py` and `implementation/generate_fold_data.py`.
+The input data are two files `nodes.json` and `edges.json` stored in one folder. The required data format is as below:
+```
+# nodes.json
+{
+  TWEET_ID:
+  {
+    "user_id": USER_ID,
+    "text": TWEET_CONTENT,
+     "timestamp": TIMESTAMP,
+     "label": HATEFUL_LABEL
+   },
+   ......
+}
 
+```
+```
+# edges.json
+[
+  [
+    TWEET_ID_from, TWEET_ID_to
+  ],
+  ......
+]
+```
+Follow the preprocessing pipeline the generated data can be loaded by PyTorch dataset implemented in `implementation/dataset.py`.
 ## Our model:HEAR
-The PyTorch implementation of our model is provided in `implementation/model.py`, you can run the model with provided sample data by running:
+The PyTorch implementation of our model is provided in `implementation/model.py`, once you prepared the required `nodes.json` and `edges.json`, you can modify `implementation/run.sh` to change the dataset path and run the whole pipeline:
 ```
-python main.py
+sh run.sh
 ```
-
+or if you have already processed the data:
+```
+python main.py -d YOUR_DATASET_PATH -e TRAIN_EPOCH_NUM -k FOLD_NUM
+```
 ## Citation
 If you find this paper useful, please cite following reference:
 ```

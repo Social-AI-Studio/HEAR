@@ -25,10 +25,24 @@ class SimpleRNN(nn.Module):
         self.hidden_dim = hidden_dim
         self.out_dim = out_dim
         self.GRU_layers = GRU_layers
+        
         self.proj = nn.Linear(self.input_dim, self.hidden_dim)
         self.GRU = nn.GRU(input_size=self.hidden_dim, hidden_size=self.hidden_dim, num_layers=self.GRU_layers, bias=True, batch_first=True, bidirectional=True)
         self.output = nn.Linear(self.hidden_dim*2, self.out_dim) # in_dim is hidden_dim*2 since we have bidirectional GRU
         self.relu = nn.ReLU()
+        
+    def forward(self, seq, seq_length):        
+        x = self.proj(seq)
+        x = self.relu(x)
+        x = rnn_utils.pack_padded_sequence(x, seq_length, batch_first=True)
+        output, h_n = self.GRU(x)
+        # output: [batch_size , seq_len, hidden_dim], h_n: [num_layers, batch_size, hidden_dim]
+        #x = h_n.permute(1, 0, 2)[:, -1, :]
+        out_pad, out_len = rnn_utils.pad_packed_sequence(output, batch_first=True)
+        x = out_pad[torch.arange(out_len.shape[0]), out_len-1, :]
+        x = self.relu(x)
+        x = self.output(x)
+        return x
     
     def get_embedding(self, seq, seq_length):        
         x = self.proj(seq)
@@ -36,10 +50,12 @@ class SimpleRNN(nn.Module):
         x = rnn_utils.pack_padded_sequence(x, seq_length, batch_first=True, enforce_sorted=False)
         output, h_n = self.GRU(x)
         # output: [batch_size , seq_len, hidden_dim], h_n: [num_layers, batch_size, hidden_dim]
+        #x = h_n.permute(1, 0, 2)[:, -1, :]
         out_pad, out_len = rnn_utils.pad_packed_sequence(output, batch_first=True)
         x = out_pad[torch.arange(out_len.shape[0]), out_len-1, :]
         x = self.relu(x)
         return x
+    
     
 class NodeEmbed(nn.Module):
     def __init__(self, batch_size, in_dim, hidden_dim):
